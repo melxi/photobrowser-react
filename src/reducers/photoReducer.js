@@ -27,7 +27,7 @@ const photoReducer = (state = initialState, action) => {
 
 export const getPhotos = (page, limit) => async dispatch => {
   dispatch(setLoadingPhotos());
-  const photos = await axios.get(`http://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=${limit}`);
+  const photos = await axios.get(`https://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=${limit}`);
   return dispatch({
     type: 'GET_PHOTOS',
     data: photos.data
