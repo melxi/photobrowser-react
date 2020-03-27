@@ -4,7 +4,6 @@ import Photo from './Photo';
 
 const Photos = (props) => {
   const { photos, isLoading, hasMore, setCurrentPage } = props;
-  // console.log(props);
 
   const observer = useRef();
   const lastPhotoElementRef = useCallback(
@@ -21,15 +20,13 @@ const Photos = (props) => {
     [isLoading, hasMore]
   );
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
   return (
     <div className="gallery_photos">
       {photos.map((photo, index) => {
-        if (photos.length === index + 1) return <Photo photo={photo} key={photo.id} ref={lastPhotoElementRef}/>
-        return <Photo photo={photo} key={photo.id} />
+        if (photos.length === index + 1) {
+          return <Photo photo={photo} key={photo.id} ref={lastPhotoElementRef}/>
+      } else {
+        return <Photo photo={photo} key={photo.id} />}
       })}
     </div>
   )
