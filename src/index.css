@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.gallery_photos {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1260px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.galler_photo {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.gallery_photo img {
+  width: 100%;
+  display: block;
+}
+
+.photo_body {
+  padding: 15px;
+  background: #fafafa;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.photo_footer {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  background: #eee;
+  font-size: 0.8rem;
+  border-bottom: 2px solid #ccc;
+}
+
+.photo_link a {
+  color: #64968c;
+  text-decoration: none;
+}
+
+.photo_link a:hover {
+  text-decoration: underline;
+}
