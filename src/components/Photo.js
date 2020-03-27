@@ -1,5 +1,5 @@
-import React from 'react';
-import { forwardRef } from 'react';
+import React, { forwardRef }  from 'react';
+import { Link } from 'react-router-dom';
 
 const Photo = (props, ref) => {
   return (
@@ -13,7 +13,9 @@ const Photo = (props, ref) => {
           {props.photo.id}
         </div>
         <div className="photo_link">
-          <a href="/#">View photo</a>
+          <Link to={'/' + props.photo.id}>
+            View more
+          </Link>
         </div>
       </div>
     </div>

@@ -1,29 +1,17 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { connect } from "react-redux";
-import { getPhotos } from "./reducers/photoReducer";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Photos from "./components/Photos";
+import PhotoDetails from "./components/PhotoDetails";
 
-function App({ getPhotos, photos, isLoading, hasMore }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [limit] = useState(10);
-
-  useEffect(() => {
-    getPhotos(currentPage, limit);
-  }, [currentPage]);
-
+function App(props) {
   return (
-    <div>
-      <Photos setCurrentPage={setCurrentPage}/>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Photos} />
+        <Route path="/:id" component={PhotoDetails} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    photos: state.photos.data,
-    isLoading: state.photos.isLoading,
-    hasMore: state.photos.hasMore
-  };
-};
-
-export default connect(mapStateToProps, { getPhotos })(App);
+export default App;
