@@ -1,3 +1,5 @@
+This is a simple grid gallery which fetches photo content from JSONPlacehodler API. It works with infinite scroll which loads 10 content at a time every time the last content on the page is reached. It uses redux for storing data and simple node js server is setup for deployment to heroku. (https://morning-shelf-60244.herokuapp.com)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -5,6 +7,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
+
+Runs the app in the production mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `npm start-react`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
