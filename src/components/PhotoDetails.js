@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
+import { getPhoto } from '../reducers/photoReducer';
+import Loader from "./Loader";
 
 const PhotoDetails = props => {
   const { id, title, url } = props.photo;
+
+  useEffect(() => {
+    props.getPhoto(props.match.params.id);
+  }, [])
+
+  if (props.isLoading) {
+    return <Loader />
+  }
 
   return (
     <div className="gallery_photo gallery_photo-details">
@@ -21,12 +31,11 @@ const PhotoDetails = props => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.match.params.id;
+const mapStateToProps = state => {
   return {
     isLoading: state.photos.isLoading,
-    photo: state.photos.data.find(photo => photo.id === parseInt(id))
+    photo: state.photos.item
   };
 };
 
-export default connect(mapStateToProps)(PhotoDetails);
+export default connect(mapStateToProps, { getPhoto })(PhotoDetails);

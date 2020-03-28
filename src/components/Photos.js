@@ -6,7 +6,7 @@ import Loader from './Loader';
 
 const Photos = (props) => {
   const { photos, isLoading, hasMore } = props;
-  const [currentPage, setCurrentPage] = useState(100);
+  const [currentPage, setCurrentPage] = useState(1);
   const [limit] = useState(10);
 
   useEffect(() => {

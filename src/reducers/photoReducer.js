@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const initialState = {
   data: [],
+  item: {},
   isLoading: false,
   hasMore: false
 }
@@ -13,6 +14,12 @@ const photoReducer = (state = initialState, action) => {
         ...state,
         data: state.data.concat(action.data),
         hasMore: action.data.length > 0,
+        isLoading: false
+      }
+    case 'GET_PHOTO':
+      return {
+        ...state,
+        item: {...action.data},
         isLoading: false
       }
     case 'LOADING_PHOTOS':
@@ -31,6 +38,15 @@ export const getPhotos = (page, limit) => async dispatch => {
   return dispatch({
     type: 'GET_PHOTOS',
     data: photos.data
+  })
+}
+
+export const getPhoto = (id) => async dispatch => {
+  dispatch(setLoadingPhotos());
+  const photo = await axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`);
+  return dispatch({
+    type: 'GET_PHOTO',
+    data: photo.data
   })
 }
 
