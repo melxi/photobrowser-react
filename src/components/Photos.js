@@ -28,7 +28,7 @@ const Photos = (props) => {
     },
     [isLoading, hasMore]
   );
-
+ 
   return (
     <>
       <div className="gallery_photos">
@@ -45,6 +45,7 @@ const Photos = (props) => {
 }
 
 const mapStateToProps = state => {
+  console.log(state.photos.data)
   return {
     photos: state.photos.data,
     isLoading: state.photos.isLoading,

@@ -12,7 +12,12 @@ const photoReducer = (state = initialState, action) => {
     case 'GET_PHOTOS':
       return {
         ...state,
-        data: state.data.concat(action.data),
+        data: Object.values([...state.data, ...action.data].reduce((result, element) => {
+          if (!result[element.id]) {
+            result[element.id] = element;
+          }
+          return result;
+        }, {})),
         hasMore: action.data.length > 0,
         isLoading: false
       }
